@@ -4,6 +4,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    if (localStorage.getItem('id')) {
+      const data = {
+        id: Number(localStorage.getItem('id')),
+      };
+      this.$socket.emit('getUser', data);
+      this.$socket.emit('getRooms');
+    }
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: 'Press Start 2P', cursive;

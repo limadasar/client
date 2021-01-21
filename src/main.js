@@ -7,7 +7,7 @@ import 'nes.css/css/nes.min.css';
 
 Vue.use(
   new VueSocketIO({
-    debug: true,
+    debug: false,
     connection: 'http://localhost:3000',
     vuex: {
       store,
