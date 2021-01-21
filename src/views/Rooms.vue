@@ -85,7 +85,7 @@ export default {
       };
       this.$socket.emit('createRoom', payload);
       this.closeForm();
-      this.$router.replace('/game');
+      this.$router.replace(`/game/${id}`);
     },
   },
 };

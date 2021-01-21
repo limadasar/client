@@ -5,12 +5,24 @@
     <i class="nes-octocat animate"></i>
     <p>Until Master Room Start...</p>
 
-    <button type="button" class="nes-btn is-success">Start Game</button>
+    <button v-if="Number(room.roomMaster) === user.id" type="button" class="nes-btn is-success">
+      Start Game
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'Waiting',
+  computed: {
+    room() {
+      return this.$store.getters.room;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+  },
+};
 </script>
 
 <style></style>
