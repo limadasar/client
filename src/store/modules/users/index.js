@@ -5,6 +5,7 @@ import getters from './getters';
 export default {
   state: {
     name: null,
+    users: [],
   },
   actions,
   getters,

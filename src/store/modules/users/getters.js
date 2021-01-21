@@ -1,5 +1,5 @@
 export default {
-  name(state) {
-    return state.name;
+  users(state) {
+    return state.users;
   },
 };

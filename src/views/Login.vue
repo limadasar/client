@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     addUser() {
-      this.$store.commit('addUser', this.user);
+      this.$socket.emit('addUser', this.user);
+      localStorage.setItem('name', this.user);
       this.$router.push('/');
     },
   },
