@@ -31,7 +31,7 @@ export default {
       };
 
       this.$socket.emit('joinRoom', data);
-      this.$router.replace('/game');
+      this.$router.replace(`/game/${id}`);
     },
   },
 };

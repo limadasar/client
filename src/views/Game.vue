@@ -4,12 +4,17 @@
     <div class="row">
       <div class="column-30">
         <div class="nes-container with-title">
-          <p class="title">Players</p>
+          <p class="title">Players ({{ room.players.length }}/{{ room.maxPlayer }})</p>
           <div class="lists">
             <ul class="nes-list is-disc">
-              <li>Ari</li>
+              <li v-for="(player, index) in room.players" :key="index">
+                {{ player.name }}
+                <i v-if="Number(room.roomMaster) === player.id" class="nes-icon is-small star"></i>
+              </li>
             </ul>
           </div>
+
+          <button @click.prevent="exitGame" type="button" class="nes-btn is-error">Exit</button>
         </div>
       </div>
       <div class="column-70">
@@ -42,7 +47,30 @@ export default {
     FormNumber,
     Waiting,
   },
+
+  computed: {
+    room() {
+      return this.$store.getters.room;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+  },
+  created() {
+    const data = {
+      id: Number(this.$route.params.id),
+    };
+    this.$socket.emit('getRoom', data);
+  },
   methods: {
+    exitGame() {
+      const data = {
+        idRoom: this.room.id,
+        idUser: this.user.id,
+      };
+      this.$socket.emit('exitRoom', data);
+      this.$router.replace('/');
+    },
     countDownTimer() {
       if (this.countDown > 0) {
         setTimeout(() => {

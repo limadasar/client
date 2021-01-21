@@ -5,6 +5,7 @@ import getters from './getters';
 export default {
   state: {
     rooms: [],
+    room: {},
   },
   actions,
   getters,
