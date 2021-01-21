@@ -4,21 +4,26 @@
     <div class="row">
       <div class="column-30">
         <div class="nes-container with-title">
-          <p class="title">Terjawab</p>
+          <p class="title">Players</p>
           <div class="lists">
             <ul class="nes-list is-disc">
-              <li>Ari (Jerapah)</li>
+              <li>Ari</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="column-70">
         <div class="nes-container with-title is-centered">
-          <p class="title">Ronde {{ round }}</p>
-          <h3>Sisa waktu: {{ countDown }}</h3>
-          <br />
-          <form-number />
-          <form-answer />
+          <div v-if="!onPlay">
+            <waiting />
+          </div>
+          <div v-else>
+            <p class="title">Ronde {{ round }}</p>
+            <h3>Sisa waktu: {{ countDown }}</h3>
+            <br />
+            <form-number v-if="!ans" />
+            <form-answer v-else />
+          </div>
         </div>
       </div>
     </div>
@@ -28,12 +33,14 @@
 <script>
 import FormAnswer from '../components/game/FormAnswer.vue';
 import FormNumber from '../components/game/FormNumber.vue';
+import Waiting from '../components/game/Waiting.vue';
 
 export default {
   name: 'Game',
   components: {
     FormAnswer,
     FormNumber,
+    Waiting,
   },
   methods: {
     countDownTimer() {
@@ -42,11 +49,18 @@ export default {
           this.countDown -= 1;
           this.countDownTimer();
           if (this.countDown === 0) {
-            this.countDown = 20;
-            // if (this.round <= this.maxRound) {
-            //   this.round -= 1;
-            //   this.countDownTimer();
-            // }
+            if (!this.ans) {
+              this.ans = true;
+            } else {
+              this.countDown = 20;
+              this.ans = false;
+              if (this.round <= this.maxRound) {
+                this.round -= 1;
+                this.countDownTimer();
+              } else {
+                // done
+              }
+            }
           }
         }, 1000);
       }
@@ -57,11 +71,9 @@ export default {
       round: 1,
       countDown: 20,
       maxRound: 5,
-      jawab: false,
+      ans: false,
+      onPlay: false,
     };
-  },
-  created() {
-    this.countDownTimer();
   },
 };
 </script>
