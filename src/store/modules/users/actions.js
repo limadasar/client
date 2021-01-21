@@ -1,5 +1,8 @@
 // import api from '@/api/api';
 
 export default {
-  enter() {},
+  addUser(context, payload) {
+    localStorage.setItem('id', payload.id);
+    context.commit('setUser', payload);
+  },
 };
