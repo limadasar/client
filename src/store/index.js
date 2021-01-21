@@ -5,8 +5,15 @@ import usersModule from './modules/users/index';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    user: '',
+  },
+  mutations: {
+    addUser(state, payload) {
+      state.user = payload;
+      localStorage.setItem('user', payload);
+    },
+  },
   actions: {},
   modules: {
     users: usersModule,
