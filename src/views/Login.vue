@@ -5,15 +5,17 @@
       <p class="nes-text is-success">Ayo bermain bersama</p>
       <h1>ABC 5 dasar ^_^</h1>
       <form @submit.prevent="addUser">
-      <div class="nes-field input">
-        <label for="name_field">Your name, Kimi no Namaewa</label>
-          <input type="text"
-            v-model="user"
+        <div class="nes-field input">
+          <label for="name_field">Your name, Kimi no Namaewa</label>
+          <input
+            type="text"
+            v-model="name"
             id="name_field"
             class="nes-input"
             placeholder="Hey input your name .."
-          >
-        </div><br>
+          />
+        </div>
+        <br />
         <button type="submit" class="nes-btn is-success tombol">Masuk!</button>
       </form>
     </div>
@@ -25,13 +27,18 @@ export default {
   name: 'Login',
   data() {
     return {
-      user: '',
+      name: '',
     };
   },
   methods: {
     addUser() {
-      this.$socket.emit('addUser', this.user);
-      localStorage.setItem('name', this.user);
+      const id = Date.now();
+      const data = {
+        id,
+        name: this.name,
+      };
+      this.$socket.emit('login', data);
+      this.$store.dispatch('addUser', data);
       this.$router.push('/');
     },
   },
@@ -43,7 +50,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vW;
+  width: 100vw;
   height: 100vh;
 }
 .box {

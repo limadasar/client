@@ -1,8 +1,9 @@
 export default {
-  setUsers(state, payload) {
-    state.users = payload;
+  setUser(state, payload) {
+    state.user = payload;
   },
-  setName(state, payload) {
-    state.name = payload;
+  SOCKET_sendUser(state, payload) {
+    console.log(payload);
+    state.user = payload;
   },
 };

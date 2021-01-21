@@ -1,8 +1,8 @@
 // import api from '@/api/api';
 
 export default {
-  SOCKET_sendUser(context, payload) {
-    console.log(payload);
-    context.commit('setUsers', payload);
+  addUser(context, payload) {
+    localStorage.setItem('id', payload.id);
+    context.commit('setUser', payload);
   },
 };

@@ -6,9 +6,6 @@ import roomsModule from './modules/rooms/index';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
   modules: {
     users: usersModule,
     rooms: roomsModule,
