@@ -2,7 +2,14 @@
   <div class="nes-container is-rounded">
     <h5>Room: {{ room.name }}</h5>
     <p>{{ room.players.length }}/{{ room.maxPlayer }}</p>
-    <button @click.prevent="join(room.id)" type="button" class="nes-btn is-warning">Join</button>
+    <button
+      v-if="room.players.length <= room.maxPlayer"
+      @click.prevent="join(room.id)"
+      type="button"
+      class="nes-btn is-warning"
+    >
+      Join
+    </button>
   </div>
 </template>
 
@@ -18,7 +25,7 @@ export default {
   methods: {
     join(id) {
       const data = {
-        roomId: id,
+        idRoom: id,
         idUser: this.user.id,
         name: this.user.name,
       };
