@@ -1,7 +1,7 @@
 <template>
   <div id="room">
+    <h3>Hi.. {{ user.name }} (^^)/</h3>
     <div class="nes-container with-title is-centered">
-      <h2>Hi.. {{ user.name }}</h2>
       <p class="title">Room</p>
       <button @click.prevent="openForm" type="button" class="nes-btn is-warning tombol">
         Create Room
@@ -96,6 +96,7 @@ export default {
 #room {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100vw;
   height: 100vh;
