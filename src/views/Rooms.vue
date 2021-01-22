@@ -1,6 +1,7 @@
 <template>
   <div id="room">
     <div class="nes-container with-title is-centered">
+      <h2>Hi.. {{ user.name }}</h2>
       <p class="title">Room</p>
       <button @click.prevent="openForm" type="button" class="nes-btn is-warning tombol">
         Create Room

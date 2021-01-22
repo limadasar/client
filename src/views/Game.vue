@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="nes-text"><center>Game</center></h1>
+    <h1 class="nes-text">
+      <center>Game - {{ room.name }}</center>
+    </h1>
     <div class="row">
       <div class="column-30">
         <div class="nes-container with-title">
