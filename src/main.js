@@ -8,7 +8,7 @@ import 'nes.css/css/nes.min.css';
 Vue.use(
   new VueSocketIO({
     debug: false,
-    connection: 'http://localhost:3000',
+    connection: 'https://glassgow-fox-abc5dasar.herokuapp.com',
     vuex: {
       store,
       actionPrefix: 'SOCKET_',
