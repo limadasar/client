@@ -4,9 +4,9 @@ import getters from './getters';
 
 export default {
   state: {
+    game: null,
     play: false,
-    players: [],
-    roomMaster: null,
+    answers: [],
   },
   actions,
   getters,
